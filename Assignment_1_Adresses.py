@@ -2,16 +2,18 @@
 
 # The code is trying to scrape addresses details from a list of company websites stored in a parquet file.
 # It reads a Parquet file containing the website names into a Pandas DataFrame and then uses the extract_address_details function to extract the details.
+
 # It will check if the website has a Google Maps integration by searching for the "iframe" tag in the HTML content with a "src" attribute containing "google.com/maps". 
 # If the website has a Google Maps integration, it will extract the address details using the "class" attributes of the "span" and "div" tags.
 # If the website does not have a Google Maps integration, it will use the Geocoder library to extract the location data using the URL.
-# The details are then written to a CSV file with headers "Website", "Country", "City", "Postcode", and "Road Number" and they are also printed in the terminal.
+
+# Then, the extracted data is written to a CSV file with headers "Website", "Country", "City", "Postcode", and "Road Number" and the data is also printed in the terminal.
 
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import csv
-import geocoder
+# import geocoder
 
 def extract_address_details(url):
     # Check if the URL starts with "http" or "https"
@@ -53,18 +55,19 @@ def extract_address_details(url):
             if tag.get("class") and "street-address" in tag["class"]:
                 address["Road Number"] = tag.text
         return address
-    else:
-        # Use the Geocoder library to extract the location data
-        try:
-            g = geocoder.osm(url)
-            address = {}
-            address["Country"] = g.country
-            address["City"] = g.city
-            address["Postcode"] = g.postal
-            address["Road Number"] = None
-            return address
-        except:
-            return None
+
+    # else:
+        # Use the Geocoder library to extract the location data - this code should be used to extract location in the case that map location is not integrated in the website.
+        # try:
+            # g = geocoder.osm(url)
+            # address = {}
+            # address["Country"] = g.country
+            # address["City"] = g.city
+            # address["Postcode"] = g.postal
+            # address["Road Number"] = None
+            # return address
+        # except:
+            # return None
 
 # Read the Parquet file into a Pandas DataFrame
 df = pd.read_parquet(r'C:\Users\User\Downloads\list of company websites.snappy.parquet')
