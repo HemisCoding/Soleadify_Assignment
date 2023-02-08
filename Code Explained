@@ -1,0 +1,41 @@
+The assignment that I choosed is Assignment 1: Address Extraction
+
+In the first part of the project analyze, I have tried to make a code structure which
+should help me know what should be the steps that I should take in order to achieve my task 
+
+The structure that was firstly created was useful especially for Input and Output sections (will detail below what these sections means), but for the main code it wasn't the most succesful because there was some problems that were met and some elements that was seen and will be described below
+
+Code Structure: 
+
+    Input Section:
+        I considered the input section to be represented by the reading of the "parquet file" and accessing all the websites from the file (it was found 2478 websites links: starting with umbrawindowtinting.com and finishing with mackay.co.uk).
+        Some problems were met related to the file reading because of the "pandas" library, but finally the problems were solved. 
+
+        1. To Read the parquet file: It was used pandas.read_parquet function to read the data from the parquet file into a Pandas DataFrame.
+        2. Iterate over the rows of the DataFrame: It was used df.iterrows function to iterate over the rows of the DataFrame and extract the URLs of the websites to be scraped.
+        3. Send HTTP requests to the websites: It was used the requests.get function to send HTTP requests to the websites and retrieve the HTML content of each page.
+        4. Parse the HTML content: It was used a HTML parsing library such as BeautifulSoup to parse the HTML content of each page and extract the data you're interested in.
+
+    Main Section:
+        Main section is for the actual code where the magic should happen and take all the data from the websites (in this case: country, region, city, postcode, road, and road numbers).
+        
+        {Problems that were met and what was observed}: 
+        The first idea was to do web scrapping over every html of websites and use the "div" class names of contact sections, but the problem (and actually a normal one) was that websites had different names for classes. It would work if there was only 1 website or the websites had the same names for classes, id, etc.
+        Then I observed that not every website works, or not every website has the name of the country, city, also having different postcodes types or they may have any missing section that I look for. (this one representing another problem)
+        My intention was to extract all the postcodes but the that pattern is not the same for every website brought another barrier.
+        Another problem was that when going through the sites and verifies if they have the right postcodes some websites are down making the code to crash.
+
+        {A probable solution}:
+        A common thing for most of the website that was observed is the google maps section that should give the exact location, but not every website has it implemented on the, but making reference to that assignment description where is said ("valid adresses"), I will make the assumption that not every website should have a valid adress and the google maps is the key to find the location of every company.
+        Also, it was found that some websites have in their Contact Section the details that I needed and the code will try to extract also them by using a pattern for every element that I'm looking for (Country, City, Postcodes, Road Numbers).
+        Unfortunately, the code doesn't work as it was expected, it analyze a part of the websites, but at some points it crashes and stop working from that point.
+
+    Output Section:
+        The Output section is represented by how the extracted data will be stored.
+        Having in view that the list of website is quite big, I considere that the right way to store the data is in a csv file.
+        
+
+
+
+
+
