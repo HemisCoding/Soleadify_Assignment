@@ -1,17 +1,23 @@
     Hello! 
 
-    The structure of the is the same as it was in V1 and I don't want to boring someone with it, quick resume: Input (reading parquet file), Main section (Scraping the websites over the data that is needed - Countries, Cities, Postcodes and Road Numbers) and Output (sending the data to a ".csv" file).
+    The structure of the is the same as it was in V1 and I don't want to boring someone with it, quick resume: Input (reading parquet file),
+    Main section (Scraping the websites over the data that is needed - Countries, Cities, Postcodes and Road Numbers) and Output (sending the data to a ".csv" file).
 
     Going to V2:
 
-    I will explain here the method that I choosed to follow to make the code for this assignment and what makes me choose this method.
+    I will explain here the method that I choosed to follow to make the code for this assignment and what made me choose this method.
 
     In the first place, it was observed that location data is presented in different sections of the websites (such as: Footer, Contact, About Us Sections and so on.).
-    Another thing observered was that the data is different (the names of countries, types of postcodes or road numbers) making the things harder because I couldn't work with 'div' classes or id's method. 
+    Another thing observered was that the data is different (the names of countries, types of postcodes or road numbers)
+    making the things harder because I couldn't work with 'div' classes or id's method. 
 
     I had to find something that some websites has in common with others, so I though about looking for some PATTERNS.
-    Maybe not all the websites has the same country or postcodes, but some of them should have. So, the strategy was to find some patterns for Countries, Cities, Postcodes and Road Numbers and start scraping those websites and output the data in a ".csv" file as I did first time.
+    Maybe not all the websites has the same country or postcodes, but some of them should have.
+    So, the strategy was to find some patterns for Countries, Cities, Postcodes and Road Numbers,
+    and start scraping those websites and output the data in a ".csv" file as I did first time.
 
-    Some sort of problems appeared when tried to makes this code work, but finally the postcodes are well extracted, but problem is the at some point the code crashes because a connection problem (I think that this is because of the number of websites is quite big making the system to be oversaturated and crash)
+    Some sort of problems appeared when tried to makes this code work, but finally the postcodes are well extracted,
+    but problem is the at some point the code crashes because a connection problem.
+    (I think that this is because of the number of websites is quite big making the system to be oversaturated and crash).
 
-    A more technical explanation of the code is presented in the commented part at the start of the ".py" file.
+    A more technical explanation of the code is presented in the commented part at the start of the "Soleadify_Assignment_V2.py" file.
